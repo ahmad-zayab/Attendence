@@ -1,0 +1,13 @@
+.text{
+    font-family: verdana;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}                  
+
+
