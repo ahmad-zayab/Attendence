@@ -26,7 +26,15 @@ function Login() {
       // navigate("/dashboard");
     } catch (err) {
        console.error(err);
-      setResponseMessage("Login failed");
+       if (err.response && err.response.data) {
+         const errorData = err.response.data;
+         const errorMessage = typeof errorData === 'object' 
+           ? Object.values(errorData).flat().join(', ')
+           : JSON.stringify(errorData);
+         setResponseMessage("Login failed: " + errorMessage);
+       } else {
+         setResponseMessage("Login failed: " + err.message);
+       }
     }
   };
 

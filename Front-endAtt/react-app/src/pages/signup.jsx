@@ -18,12 +18,22 @@ function Signup() {
     e.preventDefault();
     try {
       const payload = { email, full_name, password, role };
-       await API.post("/api/accounts/register/", payload);
+      await API.post("/api/accounts/register/", payload, { headers: { Authorization: "" } });
+
       setResponseMessage("Signup successful! Please login.");
       setTimeout(() => navigate("/"), 1000);
     } catch (err) {
       console.error(err);
-      setResponseMessage("Error creating account");
+      if (err.response && err.response.data) {
+
+        const errorData = err.response.data;
+        const errorMessage = typeof errorData === 'object' 
+          ? Object.values(errorData).flat().join(', ')
+          : JSON.stringify(errorData);
+        setResponseMessage("Error: " + errorMessage);
+      } else {
+        setResponseMessage("Error creating account: " + err.message);
+      }
     }
   };
   return (
