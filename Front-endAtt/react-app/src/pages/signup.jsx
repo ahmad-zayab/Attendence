@@ -3,33 +3,28 @@ import { useNavigate } from 'react-router-dom';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import './signup.css';
 import axios from "axios";
+import API from '../services/api';
 function Signup() {
-    const [name, setName] = useState('');
+    const [full_name, setFullName] = useState("");
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
    const [responseMessage, setResponseMessage] = useState("");
+    const [role, setRole] = useState("EMPLOYEE");
   const navigate = useNavigate();
  const goToLogin = () => {
     navigate("/"); 
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-            const newPost = {
-            name,
-            email,
-            password,
-        };
-        axios.post("https://jsonplaceholder.typicode.com//posts", newPost)
-            .then((response) => {
-                setResponseMessage("signup successful!");
-                console.log("Response:", response);
-
-            })
-            .catch((err) => {
-                setResponseMessage("Error creating post");
-            });
-    console.log('Signup attempted with:', { name, email, password });
-
+    try {
+      const payload = { email, full_name, password, role };
+       await API.post("/api/accounts/register/", payload);
+      setResponseMessage("Signup successful! Please login.");
+      setTimeout(() => navigate("/"), 1000);
+    } catch (err) {
+      console.error(err);
+      setResponseMessage("Error creating account");
+    }
   };
   return (
     <>
@@ -43,8 +38,8 @@ function Signup() {
               <Form.Control
                 type="text"
                 placeholder="Enter name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                value={full_name}
+                onChange={(e) => setFullName(e.target.value)}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -66,6 +61,15 @@ function Signup() {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </Form.Group>
+            <Form.Group className="mb-3" >
+              <Form.Label>Role</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter Role"
+                value={role}
+                onChange={(e) => setRole(e.target.value)}
+              />
+              </Form.Group>
 
             <Button variant="primary" type="submit" className="btn btn-success w-100">
               Signup
