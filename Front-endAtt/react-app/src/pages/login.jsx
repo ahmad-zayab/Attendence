@@ -4,6 +4,7 @@ import API from "../services/api";
 import { saveTokens } from "../services/auth";
 import { useNavigate } from 'react-router-dom'; 
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+
 import './login.css';
 
 function Login() {
@@ -23,7 +24,7 @@ function Login() {
       saveTokens(res.data);
       setResponseMessage("Login successful!");
       console.log("Login response:", res.data);
-      // navigate("/dashboard");
+      navigate("/Dashboard");
     } catch (err) {
        console.error(err);
        if (err.response && err.response.data) {

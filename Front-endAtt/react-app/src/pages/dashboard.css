@@ -1,0 +1,87 @@
+.Create{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+
+}
+.logout-button{
+   position: fixed;
+  top: 20px;
+  right: 20px;
+}
+
+.group-form{
+display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+ padding: 20px;
+  background-color: rgb(230, 186, 173);
+}
+.button{
+    display: flex;
+      justify-content: center;
+  align-items: center;
+      margin-top: 10px;
+}
+
+
+
+.Results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  max-width: 980px;
+  margin: 36px auto;
+  padding: 26px;
+ 
+}
+
+
+
+.table {
+  width: 100%;
+  border-collapse: separate;      
+  border-spacing: 0 12px;         
+}
+
+.table thead th {
+  text-align: left;
+  padding: 10px 18px;
+  font-weight: 700;
+  color: #243447;
+  border-bottom: none;
+}
+
+
+.table tbody td {
+  background: #ffffff;
+  padding: 14px 18px;
+  vertical-align: middle;
+  border-top: 0;
+  border-bottom: 0;
+  box-shadow: 0 4px 10px rgba(20,30,60,0.04);
+  border-radius: 8px;
+}
+.table tbody tr td:first-child {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+.table tbody tr td:last-child {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.table td:nth-child(1), .table th:nth-child(1) { width: 45%; }
+.table td:nth-child(2), .table th:nth-child(2) { width: 15%; text-align: center; }
+.table td:nth-child(3), .table th:nth-child(3) { width: 30%; text-align: center; }
+
+ .action-buttons {
+  display: flex;
+  justify-content: center; 
+  align-items: center;   
+  gap: 10px;
+}

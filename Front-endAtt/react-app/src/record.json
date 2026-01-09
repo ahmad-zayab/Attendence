@@ -1,0 +1,26 @@
+[
+    {
+        "index": 0,
+        "name":"Ahmad Khan",
+        "age":30,
+        "address":"123 Main St, Cityville"
+    },
+    {
+        "index": 1,
+        "name":"Sara Lee",
+        "age":25,
+        "address":"456 Oak Ave, Townsville"
+    },
+    {
+        "index": 2,
+        "name":"John Doe",
+        "age":28,
+        "address":"789 Pine Rd, Villagetown"
+    },
+    {
+        "index": 3,
+        "name":"Emily Davis",
+        "age":22,
+        "address":"321 Maple St, Hamletburg"
+    }
+]
