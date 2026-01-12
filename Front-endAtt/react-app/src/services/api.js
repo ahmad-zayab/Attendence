@@ -8,21 +8,21 @@ const API = axios.create({
   },
 });
 
-// Check if token is expired
 const isTokenExpired = (token) => {
   if (!token) return true;
   try {
     const payload = JSON.parse(atob(token.split('.')[1]));
     const now = Math.floor(Date.now() / 1000);
     return now >= payload.exp;
+    console.log("Token Expired");
   } catch (e) {
     return true;
   }
 };
 
-// Request interceptor: attach token if valid
+
 API.interceptors.request.use((config) => {
-  // Don't attach token for signup/login endpoints
+  
   if (config.url.includes("/register/") || config.url.includes("/login/")) {
     return config;
   }
@@ -37,7 +37,7 @@ API.interceptors.request.use((config) => {
   return config;
 }, (error) => Promise.reject(error));
 
-// Response interceptor: handle token errors
+
 API.interceptors.response.use(
   (res) => res,
   (err) => {
